@@ -285,6 +285,7 @@ Ohai.plugin(:Cloud) do
 
   # Fill cloud hash with croc values
   def get_croc_values
+    cloud[:provider] = "croc"
   end
   
   collect_data do
@@ -345,5 +346,6 @@ Ohai.plugin(:Cloud) do
     if on_croc?
       create_objects
       get_croc_values
+    end
   end
 end

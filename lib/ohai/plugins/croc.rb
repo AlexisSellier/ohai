@@ -26,7 +26,7 @@ Ohai.plugin(:Croc) do
   # false:: Otherwise
   def has_c2_user?
     so = shell_out("id c2-user")
-    if so.existatus == 0
+    if so.exitstatus == 0
       true
     else
       false
