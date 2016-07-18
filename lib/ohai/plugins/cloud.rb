@@ -26,6 +26,7 @@ Ohai.plugin(:Cloud) do
   depends "azure"
   depends "digital_ocean"
   depends "softlayer"
+  depends "croc"
 
   # Make top-level cloud hashes
   #
@@ -269,6 +270,23 @@ Ohai.plugin(:Cloud) do
     cloud[:provider] = "softlayer"
   end
 
+  # ----------------------------------------
+  # croc.ru
+  # ----------------------------------------
+
+  # Is current cloud croc.ru?
+  #
+  # === Return
+  # true:: If croc Mash is defined
+  # false:: Otherwise
+  def on_croc?
+    croc != nil
+  end
+
+  # Fill cloud hash with croc values
+  def get_croc_values
+  end
+  
   collect_data do
     # setup gce cloud
     if on_gce?
@@ -322,5 +340,10 @@ Ohai.plugin(:Cloud) do
       create_objects
       get_softlayer_values
     end
+
+    # setup croc.ru cloud
+    if on_croc?
+      create_objects
+      get_croc_values
   end
 end
